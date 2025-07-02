@@ -19,7 +19,7 @@ import io # Đảm bảo io cũng được import
 warnings.filterwarnings('ignore')
 
 # Thêm 'st' vào danh sách tham số của hàm
-def run_eda(df_path='Data/final_dataset.csv', st=st):    """Performs EDA and returns results/figures."""
+def run_eda(df_path='data/final_dataset.csv', st=st): # Đổi thành 'data/'
     # Phần còn lại của hàm giữ nguyên
     df = pd.read_csv(df_path)
     # ... (các dòng code còn lại của hàm run_eda)
