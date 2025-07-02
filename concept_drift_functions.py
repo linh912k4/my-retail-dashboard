@@ -13,7 +13,7 @@ from scipy.stats import ks_2samp
 import matplotlib.pyplot as plt
 import io
 
-def run_concept_drift_check(df_path='/content/final_dataset.csv', st=None):
+def run_concept_drift_check(df_path='Data/final_dataset.csv', st=None): # THÊM 'Data/'
     """
     Checks for concept drift in 'Quantity_Sold' using KS test.
     """
