@@ -48,13 +48,29 @@ analysis_option = st.sidebar.radio(
 )
 
 # --- Data Loading (Global for all modules) ---
-EDA_DATA_PATH = 'final_dataset.csv' # Đổi thành 'data/'
-MODEL_TRANSACTION_DATA = 'transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
-MODEL_PROMOTION_DATA = 'promotion_data.csv' # Đổi thành 'data/'
-MODEL_STORE_DATA = 'store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
-OPT_STORE_INFO_DATA = 'store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
-OPT_TRANS_INFO_DATA = 'transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
-CONCEPT_DRIFT_DATA = 'final_dataset.csv' # Đổi thành 'data/'
+def check_file_exists(file_path):
+    """Check if file exists and return appropriate path"""
+    import os
+    if os.path.exists(file_path):
+        return file_path
+    # Try alternative paths
+    alternatives = [
+        f"data/{file_path}",
+        f"./{file_path}",
+        file_path
+    ]
+    for alt_path in alternatives:
+        if os.path.exists(alt_path):
+            return alt_path
+    return file_path  # Return original if none found
+
+EDA_DATA_PATH = check_file_exists('final_dataset.csv')
+MODEL_TRANSACTION_DATA = check_file_exists('transaction_data_2023_2024_updated.csv')
+MODEL_PROMOTION_DATA = check_file_exists('promotion_data.csv')
+MODEL_STORE_DATA = check_file_exists('store_info_data_2023_2024_updated.csv')
+OPT_STORE_INFO_DATA = check_file_exists('store_info_data_2023_2024_updated.csv')
+OPT_TRANS_INFO_DATA = check_file_exists('transaction_data_2023_2024_updated.csv')
+CONCEPT_DRIFT_DATA = check_file_exists('final_dataset.csv')
 
 
 # --- Main Content Area based on Selection ---
@@ -71,19 +87,39 @@ elif analysis_option == "Dự báo Doanh số (Model Training)":
     st.header("Dự báo Doanh số")
     st.info(f"Đang sử dụng dữ liệu từ: `{MODEL_TRANSACTION_DATA}`, `{MODEL_PROMOTION_DATA}`, `{MODEL_STORE_DATA}`")
 
+    # Debug: Show available files
+    import os
+    st.write("**Debug - Files trong thư mục hiện tại:**")
+    current_files = [f for f in os.listdir('.') if f.endswith('.csv')]
+    st.write(current_files)
+
     st.markdown("""
         Chọn mô hình bạn muốn chạy để dự báo doanh số.
         Lưu ý: Các mô hình có thể mất một chút thời gian để huấn luyện.
     """)
 
     # Preprocess data once for all models to avoid redundancy
+    df_for_models = None
     with st.spinner('Đang tiền xử lý dữ liệu cho các mô hình...'):
-        df_for_models = preprocess_data_for_models(
-            transaction_path=MODEL_TRANSACTION_DATA,
-            promotion_path=MODEL_PROMOTION_DATA,
-            store_path=MODEL_STORE_DATA
-        )
-    st.success("Tiền xử lý dữ liệu hoàn tất.")
+        try:
+            df_for_models = preprocess_data_for_models(
+                transaction_path=MODEL_TRANSACTION_DATA,
+                promotion_path=MODEL_PROMOTION_DATA,
+                store_path=MODEL_STORE_DATA
+            )
+            st.success("Tiền xử lý dữ liệu hoàn tất.")
+        except FileNotFoundError as e:
+            st.error(f"❌ Lỗi: {str(e)}")
+            st.info("💡 **Hướng dẫn khắc phục:**")
+            st.write("1. Kiểm tra các file CSV có trong thư mục gốc của ứng dụng")
+            st.write("2. Đảm bảo tên file chính xác:")
+            st.write(f"   - `{MODEL_TRANSACTION_DATA}`")
+            st.write(f"   - `{MODEL_PROMOTION_DATA}`")
+            st.write(f"   - `{MODEL_STORE_DATA}`")
+            st.stop()
+        except Exception as e:
+            st.error(f"❌ Lỗi không xác định: {str(e)}")
+            st.stop()
 
     model_choice = st.selectbox(
         "Chọn mô hình dự báo:",

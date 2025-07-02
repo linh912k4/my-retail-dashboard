@@ -14,6 +14,7 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
 from prophet import Prophet # Make sure you have prophet installed
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
@@ -31,9 +32,29 @@ def preprocess_data_for_models(
     Loads and preprocesses data for all forecasting models.
     Returns the final merged and cleaned DataFrame (df_final).
     """
-    df_transaction = pd.read_csv(transaction_path)
-    df_promotion = pd.read_csv(promotion_path)
-    df_store = pd.read_csv(store_path)
+    import os
+    
+    # Check if files exist
+    files_to_check = {
+        'transaction_path': transaction_path,
+        'promotion_path': promotion_path,
+        'store_path': store_path
+    }
+    
+    missing_files = []
+    for file_name, file_path in files_to_check.items():
+        if not os.path.exists(file_path):
+            missing_files.append(file_path)
+    
+    if missing_files:
+        raise FileNotFoundError(f"Không tìm thấy các file sau: {', '.join(missing_files)}. Vui lòng kiểm tra xem các file đã được upload đúng vị trí chưa.")
+    
+    try:
+        df_transaction = pd.read_csv(transaction_path)
+        df_promotion = pd.read_csv(promotion_path)
+        df_store = pd.read_csv(store_path)
+    except Exception as e:
+        raise Exception(f"Lỗi khi đọc file dữ liệu: {str(e)}")
 
     # Drop duplicates
     df_transaction.drop_duplicates(inplace=True)
