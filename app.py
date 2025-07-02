@@ -52,8 +52,8 @@ analysis_option = st.sidebar.radio(
 # QUAN TRỌNG: Khi triển khai, bạn cần đảm bảo các file CSV này nằm cùng thư mục với app.py
 # hoặc trong một thư mục con mà bạn tham chiếu đúng đường dẫn.
 EDA_DATA_PATH = 'final_dataset.csv'
-MODEL_TRANSACTION_DATA = 'transaction_data_2024_2025_updated - transaction_data_2024_2025_updated.csv'
-MODEL_PROMOTION_DATA = 'promotion_data - promotion (1).csv'
+MODEL_TRANSACTION_DATA = 'transaction_data_2023_2024_updated - transaction_data_2023_2024_updated.csv'
+MODEL_PROMOTION_DATA = 'promotion_data - promotion.csv'
 MODEL_STORE_DATA = 'store_info_data_2024_2025_updated - store_info_data_2024_2025_updated.csv'
 OPT_STORE_INFO_DATA = 'store_info_data_2023_2024_updated.csv'
 OPT_TRANS_INFO_DATA = 'transaction_data_2023_2024_updated.csv'
