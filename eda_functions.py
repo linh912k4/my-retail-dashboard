@@ -98,28 +98,30 @@ def run_eda(df_path='final_dataset.csv', st=st): # st=st là mặc định, như
     df['Promo_Type'] = df['Promo_Type_Code'].map(promo_map)
     promo_df = df[df['Promo_Type_Code'].isin([1, 2])].copy() # Ensure promo_df is defined
 
+    # QUAN TRỌNG: Thêm các dòng này NGAY SAU khi tạo promo_df
+    # Đảm bảo cột 'Date' là datetime
+    promo_df['Date'] = pd.to_datetime(promo_df['Date'])
+    # Tạo cột YearMonth trên promo_df
+    promo_df['YearMonth'] = promo_df['Date'].dt.to_period('M')
+    
     if not promo_df.empty:
+        # ... (các phần code tiếp theo, bao gồm đoạn gây lỗi ở dòng 119) ...
         # Calculate the frequency of each promotion type, excluding 'No Promo' (Promo_Type_Code 0)
         promo_count = promo_df[promo_df['Promo_Type_Code'] != 0]['Promo_Type_Code'].value_counts()
-        if not promo_count.empty:
-            fig4 = plt.figure(figsize=(8, 5))
-            sns.barplot(x=promo_count.index.astype(str), y=promo_count.values,
-                        palette=['#4B0082', '#0057B8', '#008B8B', '#B22222', '#FF7300'])
-            plt.xlabel('Promotion Type')
-            plt.ylabel('Frequency')
-            plt.title('Promotion Type Frequency (Excluding No Promotion)')
-            st.pyplot(fig4)
-        else:
-            st.write("No promotion data available for frequency analysis.")
-
+        # ... (phần code Promotion Type Frequency) ...
+    
         st.write("### Promotion Activity Throughout the Year")
-        df['Date'] = pd.to_datetime(df['Date'])
-        df['YearMonth'] = df['Date'].dt.to_period('M')
+        # Không cần dòng này nữa nếu đã tạo promo_df['YearMonth'] ở trên
+        # df['Date'] = pd.to_datetime(df['Date'])
+        # df['YearMonth'] = df['Date'].dt.to_period('M')
+    
         # Aggregate monthly promo data
+        # Dòng này bây giờ sẽ hoạt động vì promo_df đã có cột YearMonth
         monthly_promo = promo_df.groupby('YearMonth').agg(
             num_promotion=('Promo_ID', 'nunique'), # Count unique promo IDs
             total_budget=('Promo_Budget', 'sum')
         ).reset_index()
+
 
         if not monthly_promo.empty:
             fig5, ax1 = plt.subplots(figsize=(12, 6))
