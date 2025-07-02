@@ -4,8 +4,7 @@ matplotlib
 seaborn
 scikit-learn
 prophet # For Prophet model
-tensorflow # For LSTM model (or tensorflow-cpu)
-lightgbm # For LightGBM model
+tensorflow-cpulightgbm # For LightGBM model
 pulp # For optimization
 scipy # For KS test in Concept Drift
 streamlit
