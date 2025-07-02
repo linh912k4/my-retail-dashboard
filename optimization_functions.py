@@ -12,8 +12,8 @@ import pulp
 import io
 
 def run_optimization(
-    store_info_path='/content/store_info_data_2023_2024_updated.csv',
-    trans_info_path='/content/transaction_data_2023_2024_updated.csv',
+    store_info_path='Data/store_info_data_2023_2024_updated.csv', # THÊM 'Data/'
+    trans_info_path='Data/transaction_data_2023_2024_updated.csv', # THÊM 'Data/'
     st=None
 ):
     """
