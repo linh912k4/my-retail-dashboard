@@ -1,11 +1,11 @@
 pandas
-numpy
+numpy==1.26.4 # Hoặc 1.24.4
 matplotlib
 seaborn
 scikit-learn
 prophet
-tensorflow-cpu # Đã tách riêng và sử dụng phiên bản CPU
-lightgbm       # Đã tách riêng
+tensorflow-cpu
+lightgbm
 pulp
 scipy
 streamlit
