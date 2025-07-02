@@ -3,8 +3,9 @@ numpy
 matplotlib
 seaborn
 scikit-learn
-prophet # For Prophet model
-tensorflow-cpulightgbm # For LightGBM model
-pulp # For optimization
-scipy # For KS test in Concept Drift
+prophet
+tensorflow-cpu # Đã tách riêng và sử dụng phiên bản CPU
+lightgbm       # Đã tách riêng
+pulp
+scipy
 streamlit
