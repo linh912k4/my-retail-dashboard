@@ -95,7 +95,7 @@ elif analysis_option == "Dự báo Doanh số (Model Training)":
 
     st.markdown("""
         Chọn mô hình bạn muốn chạy để dự báo doanh số.
-        Lưu ý: Các mô hình có thể mất một chút thời gian để huấn luyện
+        Lưu ý: Các mô hình có thể mất một chút thời gian để huấn luyệnnnn
     """)
 
     # Preprocess data once for all models to avoid redundancy
