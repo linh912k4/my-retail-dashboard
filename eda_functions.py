@@ -7,18 +7,23 @@ Original file is located at
     https://colab.research.google.com/drive/1OGHCvBN2tJClbILkEXUdhUU8TrR4nRX8
 """
 
+import streamlit as st # Thêm dòng này để st được nhận diện trong file này
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import datetime
 import warnings
+import io # Đảm bảo io cũng được import
 
 warnings.filterwarnings('ignore')
 
-def run_eda(df_path='/content/final_dataset.csv'):
+# Thêm 'st' vào danh sách tham số của hàm
+def run_eda(df_path='final_dataset.csv', st=st): # st=st là mặc định, nhưng vẫn cần import ở đầu file
     """Performs EDA and returns results/figures."""
+    # Phần còn lại của hàm giữ nguyên
     df = pd.read_csv(df_path)
+    # ... (các dòng code còn lại của hàm run_eda)
 
     st.subheader("1. Tổng quan Dữ liệu")
     st.write("---")
