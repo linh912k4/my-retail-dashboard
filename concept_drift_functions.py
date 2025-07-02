@@ -13,7 +13,8 @@ from scipy.stats import ks_2samp
 import matplotlib.pyplot as plt
 import io
 
-def run_concept_drift_check(df_path='final_dataset.csv', st=None): # Đổi thành 'data/'    """
+def run_concept_drift_check(df_path='final_dataset.csv', st=None): # Đổi thành 'data/'
+    """
     Checks for concept drift in 'Quantity_Sold' using KS test.
     """
     if st is None:

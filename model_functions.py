@@ -24,8 +24,8 @@ import io
 # --- Preprocessing Function (Centralized) ---
 def preprocess_data_for_models(
     transaction_path="transaction_data_2023_2024_updated.csv",
-    promotion_path="promotion_data.csv.csv",
-    store_path="store_info_data_2023_2024_updated.csv.csv"
+    promotion_path="promotion_data.csv",
+    store_path="store_info_data_2023_2024_updated.csv"
 ):
     """
     Loads and preprocesses data for all forecasting models.
