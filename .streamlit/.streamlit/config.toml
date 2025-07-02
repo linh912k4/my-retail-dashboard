@@ -1,0 +1,4 @@
+[runtime]
+# Sử dụng Python 3.10. Bạn có thể thử 3.9 hoặc 3.11 nếu 3.10 vẫn gặp vấn đề.
+# Hoặc 3.12 nếu bạn muốn dùng bản mới hơn và TensorFlow đã bắt kịp.
+python_version = "3.10"
