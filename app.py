@@ -67,7 +67,7 @@ if analysis_option == "EDA - Phân tích Dữ liệu":
     st.info(f"Đang sử dụng dữ liệu từ: `{EDA_DATA_PATH}`")
     with st.spinner('Đang chạy EDA...'):
         # Pass st object and data path to EDA function
-        run_eda(df_path=EDA_DATA_PATH)
+        run_eda(df_path=EDA_DATA_PATH, st=st)
     st.success("EDA hoàn tất!")
 
 elif analysis_option == "Dự báo Doanh số (Model Training)":
