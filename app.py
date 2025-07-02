@@ -48,16 +48,13 @@ analysis_option = st.sidebar.radio(
 )
 
 # --- Data Loading (Global for all modules) ---
-# Tải các file dữ liệu.
-# QUAN TRỌNG: Khi triển khai, bạn cần đảm bảo các file CSV này nằm cùng thư mục với app.py
-# hoặc trong một thư mục con mà bạn tham chiếu đúng đường dẫn.
-EDA_DATA_PATH = 'Data/final_dataset.csv' # THÊM 'Data/'
-MODEL_TRANSACTION_DATA = 'Data/transaction_data_2024_2025_updated - transaction_data_2024_2025_updated.csv' # THÊM 'Data/'
-MODEL_PROMOTION_DATA = 'Data/promotion_data - promotion (1).csv' # THÊM 'Data/'
-MODEL_STORE_DATA = 'Data/store_info_data_2024_2025_updated - store_info_data_2024_2025_updated.csv' # THÊM 'Data/'
-OPT_STORE_INFO_DATA = 'Data/store_info_data_2023_2024_updated.csv' # THÊM 'Data/'
-OPT_TRANS_INFO_DATA = 'Data/transaction_data_2023_2024_updated.csv' # THÊM 'Data/'
-CONCEPT_DRIFT_DATA = 'Data/final_dataset.csv' # THÊM 'Data/'
+EDA_DATA_PATH = 'data/final_dataset.csv' # Đổi thành 'data/'
+MODEL_TRANSACTION_DATA = 'data/transaction_data_2024_2025_updated - transaction_data_2024_2025_updated.csv' # Đổi thành 'data/'
+MODEL_PROMOTION_DATA = 'data/promotion_data - promotion (1).csv' # Đổi thành 'data/'
+MODEL_STORE_DATA = 'data/store_info_data_2024_2025_updated - store_info_data_2024_2025_updated.csv' # Đổi thành 'data/'
+OPT_STORE_INFO_DATA = 'data/store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
+OPT_TRANS_INFO_DATA = 'data/transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
+CONCEPT_DRIFT_DATA = 'data/final_dataset.csv' # Đổi thành 'data/'
 
 
 # --- Main Content Area based on Selection ---
