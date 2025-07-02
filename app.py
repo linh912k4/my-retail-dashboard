@@ -48,12 +48,12 @@ analysis_option = st.sidebar.radio(
 )
 
 # --- Data Loading (Global for all modules) ---
-EDA_DATA_PATH = 'data/final_dataset.csv' # Đổi thành 'data/'
-MODEL_TRANSACTION_DATA = 'transaction_data_2023_2024_updated - transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
-MODEL_PROMOTION_DATA = 'promotion_data - promotion.csv' # Đổi thành 'data/'
-MODEL_STORE_DATA = 'store_info_data_2023_2024_updated - store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
-OPT_STORE_INFO_DATA = 'store_info_data_2023_2024_updated - store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
-OPT_TRANS_INFO_DATA = 'transaction_data_2023_2024_updated - transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
+EDA_DATA_PATH = 'final_dataset.csv' # Đổi thành 'data/'
+MODEL_TRANSACTION_DATA = 'transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
+MODEL_PROMOTION_DATA = 'promotion_data.csv' # Đổi thành 'data/'
+MODEL_STORE_DATA = 'store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
+OPT_STORE_INFO_DATA = 'store_info_data_2023_2024_updated.csv' # Đổi thành 'data/'
+OPT_TRANS_INFO_DATA = 'transaction_data_2023_2024_updated.csv' # Đổi thành 'data/'
 CONCEPT_DRIFT_DATA = 'final_dataset.csv' # Đổi thành 'data/'
 
 
